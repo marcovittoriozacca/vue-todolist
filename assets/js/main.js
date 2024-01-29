@@ -3,21 +3,9 @@ const { createApp } = Vue
 createApp({
 data() {
     return {
+        darkModeBtn: true,
         taskToAdd: '',
-        tasks: [
-            {
-                text: 'Fare i compiti',
-                done: false,
-            },
-            {
-                text: 'Fare la spesa',
-                done: false,
-            },
-            {
-                text: 'Portare al parco i cani',
-                done: false,
-            },
-        ]
+        tasks: [],
     }
 },
 methods: {
@@ -41,7 +29,20 @@ methods: {
     },
     deleteTask(index){
         this.tasks.splice(index, 1)
+    },
+    
+    darkMode(){
+        if(this.darkModeBtn){
+            document.querySelector("html").setAttribute('data-bs-theme','light' )
+            this.darkModeBtn = false;
+            
+        }else{
+            document.querySelector("html").setAttribute('data-bs-theme','dark' )
+            this.darkModeBtn = true;
+        }
     }
+
+
 
 },
 }).mount('#app')

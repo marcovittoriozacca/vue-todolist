@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./to-do-list.png" type="image/x-icon">
     <title>Todo list</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css' integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==' crossorigin='anonymous'/>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css' integrity='sha512-tx5+1LWHez1QiaXlAyDwzdBTfDjX07GMapQoFTS74wkcPMsI3So0KYmFe6EHZjI8+eSG0ljBlAQc3PQ5BTaZtQ==' crossorigin='anonymous'/>
@@ -12,8 +13,10 @@
     
 
     <div id="app">
-        <header>
-            <h1 class="text-center py-3 mb-5">Dummy title</h1>
+        <header class="position-relative ">
+            <h1 class="text-center py-3 mb-5">To do List</h1>
+            <i @click="darkMode" :class="(darkModeBtn) ? 'fas fa-moon' : 'fas fa-sun' " class=" position-absolute" id="darkModeBtn"></i>
+
         </header>
 
         <main>
@@ -21,7 +24,7 @@
                 <div class="row justify-content-center">
                     <div class="col-6">
                         <div class="mb-5">
-                            <div id="input-field" class="d-flex align-items-center column-gap-5 ">
+                            <div id="input-field" class="d-flex align-items-center column-gap-4 ">
                                 <input
                                     type="text"
                                     class="form-control p-3 shadow-none"
@@ -30,7 +33,7 @@
                                     @keyUp.enter="addTask">
                                 <button
                                     type="button"
-                                    class="btn btn-warning py-3 px-5 fw-bold"
+                                    class="btn btn-primary p-2 px-4 fw-bold"
                                     @click="addTask">
                                     Add
                                 </button>
@@ -39,21 +42,21 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-8 border">
+                    <div class="col-8 border rounded-2 mb-5 ">
                         <!-- elementi todo list -->
                         <div v-if="(tasks.length !== 0)">
-                            <ul class="list-unstyled py-3 px-4">
+                            <ul class="list-unstyled m-0 p-0 ">
                                 <li v-for="(task, index) in tasks" :key="index"
-                                    class="py-2 d-flex align-items-center justify-content-between">
+                                    class="py-3 px-2  d-flex align-items-center justify-content-between">
 
                                         <p  @click="taskDone(index)"
                                             :class="(task.done == true) ? 'taskDoneStyle' : ''"
-                                            class="m-0 p-0">
+                                            class="m-0 p-0 todo-element">
                                             {{ task.text }}
                                         </p>
 
                                         <i  @click="deleteTask(index)"
-                                            class="fas fa-xmark p-1">
+                                            class="fas fa-xmark p-1" id="deleteBtn">
                                         </i>
 
                                 </li>
@@ -61,13 +64,14 @@
                         </div>
                         <!-- elementi visibili quando la lista è vuota -->
                         <div v-else>
-                            <p>Empty list</p>
+                            <p class="p-2 m-0 text-center fw-bol fs-2 text-secondary empty-list-element">Empty list</p>
                         </div>
 
                     </div>
                 </div>
             </div>
         </main>
+
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

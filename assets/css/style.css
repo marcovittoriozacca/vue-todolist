@@ -1,7 +1,32 @@
-i, p{
+#deleteBtn, 
+.todo-element{
     cursor: pointer;
+}
+#deleteBtn{
+    font-size: 1.2rem;
+}
+#deleteBtn:hover{
+    color: coral;
 }
 .taskDoneStyle{
     text-decoration: line-through;
     opacity: 0.5;
 }
+ul li:not(ul li:last-of-type){
+    border-bottom: 1px solid var(--bs-border-color);
+}
+.empty-list-element{
+    cursor:default
+}
+.todo-element{
+    overflow-x:hidden;
+}
+#darkModeBtn{
+    top: 23px;
+    right: 50px;
+    font-size: 1.8rem;
+}
+#darkModeBtn:hover{
+    cursor: pointer;
+}
+
