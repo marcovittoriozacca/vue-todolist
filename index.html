@@ -44,10 +44,14 @@
                         <div v-if="(tasks.length !== 0)">
                             <ul class="list-unstyled py-3 px-4">
                                 <li v-for="(task, index) in tasks" :key="index"
-                                    :class="(task.done == true) ? 'text-decoration-line-through' : ''"
                                     class="py-2 d-flex align-items-center justify-content-between">
 
-                                        {{ task.text }}
+                                        <p  @click="taskDone(index)"
+                                            :class="(task.done == true) ? 'taskDoneStyle' : ''"
+                                            class="m-0 p-0">
+                                            {{ task.text }}
+                                        </p>
+
                                         <i class="fas fa-xmark p-1"></i>
 
                                 </li>

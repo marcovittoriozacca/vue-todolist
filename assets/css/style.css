@@ -1,3 +1,7 @@
-i{
+i, p{
     cursor: pointer;
+}
+.taskDoneStyle{
+    text-decoration: line-through;
+    opacity: 0.5;
 }
