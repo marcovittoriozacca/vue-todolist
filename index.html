@@ -25,10 +25,13 @@
                                 <input
                                     type="text"
                                     class="form-control p-3 shadow-none"
-                                    placeholder="Insert a task here...">
+                                    placeholder="Insert a task here..."
+                                    v-model="taskToAdd"
+                                    @keyUp.enter="addTask">
                                 <button
                                     type="button"
-                                    class="btn btn-warning py-3 px-5 fw-bold">
+                                    class="btn btn-warning py-3 px-5 fw-bold"
+                                    @click="addTask">
                                     Add
                                 </button>
                             </div>
@@ -46,7 +49,7 @@
 
                                         {{ task.text }}
                                         <i class="fas fa-xmark p-1"></i>
-                                        
+
                                 </li>
                             </ul>
                         </div>

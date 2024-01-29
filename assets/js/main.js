@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
 data() {
     return {
+        taskToAdd: '',
         tasks: [
             {
                 text: 'Fare i compiti',
@@ -17,6 +18,19 @@ data() {
                 done: false,
             },
         ]
+    }
+},
+methods: {
+    addTask(){
+        if(this.taskToAdd.length !== 0){
+            this.tasks.unshift(
+                {
+                    text: this.taskToAdd,
+                    done: false,
+                } 
+            )
+        }
+        this.taskToAdd = '';
     }
 },
 }).mount('#app')
