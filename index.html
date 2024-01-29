@@ -52,7 +52,9 @@
                                             {{ task.text }}
                                         </p>
 
-                                        <i class="fas fa-xmark p-1"></i>
+                                        <i  @click="deleteTask(index)"
+                                            class="fas fa-xmark p-1">
+                                        </i>
 
                                 </li>
                             </ul>
