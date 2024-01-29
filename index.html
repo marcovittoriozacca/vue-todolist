@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,53 @@
     
 
     <div id="app">
-        
+        <header>
+            <h1 class="text-center py-3 mb-5">Dummy title</h1>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="mb-5">
+                            <div id="input-field" class="d-flex align-items-center column-gap-5 ">
+                                <input
+                                    type="text"
+                                    class="form-control p-3 shadow-none"
+                                    placeholder="Insert a task here...">
+                                <button
+                                    type="button"
+                                    class="btn btn-warning py-3 px-5 fw-bold">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-8 border">
+                        <!-- elementi todo list -->
+                        <div v-if="(tasks.length !== 0)">
+                            <ul class="list-unstyled py-3 px-4">
+                                <li v-for="(task, index) in tasks" :key="index"
+                                    :class="(task.done == true) ? 'text-decoration-line-through' : ''"
+                                    class="py-2 d-flex align-items-center justify-content-between">
+
+                                        {{ task.text }}
+                                        <i class="fas fa-xmark p-1"></i>
+                                        
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- elementi visibili quando la lista è vuota -->
+                        <div v-else>
+                            <p>Empty list</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
